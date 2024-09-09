@@ -2,7 +2,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_chat_app/controller/auth_controller.dart';
 import 'package:flutter_chat_app/services/auth_services.dart';
+import 'package:flutter_chat_app/services/google_auth_service.dart';
 import 'package:get/get.dart';
+import 'package:sign_in_button/sign_in_button.dart';
 
 class SignInPage extends StatelessWidget {
   const SignInPage({super.key});
@@ -82,6 +84,16 @@ class SignInPage extends StatelessWidget {
                 },
                 child: const Text("Sign In"),
               ),
+              SignInButton(
+                  Buttons.google,
+                  onPressed: () async {
+                await GoogleAuthService.googleAuthService.signInWithGoogle();
+                User? user = AuthServices.authServices.getCurrentUser();
+                if(user!=null)
+                {
+                  Get.offAndToNamed("/home");
+                }
+              }),
             ],
           ),
         ),

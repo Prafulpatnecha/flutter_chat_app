@@ -15,7 +15,7 @@ class MyChat extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       getPages: [
-        GetPage(name: '/', page: () => const AuthManager()),
+        GetPage(name: '/', page: () => const AuthManager(),transition: Transition.circularReveal),
         GetPage(name: '/home', page: () => const HomePage()),
         GetPage(name: '/signUp', page: () => const SignUpPage(),transition: Transition.fadeIn),
         GetPage(name: '/signIn', page: () => const SignInPage(),transition: Transition.fade),
