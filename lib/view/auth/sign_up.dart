@@ -125,15 +125,14 @@ class SignUpPage extends StatelessWidget {
                       {
                         await AuthServices.authServices.createAccountWithEmailAndPassword(authController.textEmail.text, authController.textPassword.text);
                         UserModel userModel = UserModel(name: authController.textName.text, email: authController.textEmail.text, image: "", phone: authController.textPhoneNo.text, token: '');
-                        
+
                         CloudFirebaseStoreServices.cloudFirebaseStoreServices.insertUserIntoFireStore(userModel);
-            
+
                         authController.textPassword.clear();
                         authController.textEmail.clear();
                         authController.textPhoneNo.clear();
                         authController.textName.clear();
                         authController.textConfirmPassword.clear();
-            
                         Get.back();
                       }
                     else{
